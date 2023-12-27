@@ -1,2 +1,4 @@
 # docker-spigot-server
- A spigot server on Docker
+Spigotサーバーのビルドから起動までを行います。
+
+そのうちかきます
