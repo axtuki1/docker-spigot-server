@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  mcserver:
+    build:
+      context: ./
+      args:
+          # JDKのバージョン
+          # 1.17以前: openjdk-8-jre-headless
+          # 1.17    : openjdk-16-jre-headless
+          # 1.17以降: openjdk-17-jre-headless
+        - JDK_PACKAGE=openjdk-17-jre-headless
+          # Minecraftのバージョン
+        - MC_VERSION=1.20.2
+    environment:
+        # 起動モード(BASH or MC)
+      - BOOT_MODE=MC
+        # 起動時の最小メモリ使用量
+      - MEM_MIN=4G
+        # 起動時の最大メモリ使用量
+      - MEM_MAX=4G
+        # オンラインモード (server.properties)
+      - ONLINE_MODE=false
+        # BungeeCord (spigot.yml)
+      - BUNGEECORD=true
+        # ポート
+      - PORT=25565
+    volumes:
+      - ./serverData:/mnt/var
+    ports:
+      - '${PORT:-25565}:${PORT:-25565}'
+    tty: true
+    stdin_open: true
