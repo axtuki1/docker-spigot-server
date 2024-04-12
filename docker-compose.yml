@@ -25,6 +25,9 @@ services:
       - BUNGEECORD=true
         # ポート
       - PORT=25565
+        # 日本語表示の設定
+      - 'LANG=C.UTF-8'
+      - 'LANGUAGE=en_US:'
     volumes:
       - ./serverData:/mnt/var
     ports:
