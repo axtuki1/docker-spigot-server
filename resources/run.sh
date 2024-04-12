@@ -2,12 +2,14 @@
 
 echo "Starting minecraft server...."
 
+# EULAに同意
 if [ ! -e eula.txt ]; then
-	echo eula=${EULA:-false} > eula.txt
+	echo eula=${EULA:-true} > eula.txt
 else 
-	sed -ie "s/eula=false/eula=${EULA:-false}/" eula.txt
+	sed -ie "s/eula=false/eula=${EULA:-true}/" eula.txt
 fi
 
+# サーバ設定反映
 if [ -e server.properties ]; then
 	sed -ie "s/online-mode=.*/online-mode=${ONLINE_MODE:-true}/" server.properties
 	echo "online-mode: ${ONLINE_MODE:-true}"
@@ -15,9 +17,10 @@ if [ -e server.properties ]; then
 	echo "server-port: ${PORT:-25565}"
 fi
 
+# サーバ設定反映 
 if [ -e spigot.yml ]; then
-	sed -ie "s/bungeecord=.*/bungeecord=${BUNGEECORD:-false}/" spigot.yml
-	echo "bungeecord: ${BUNGEECORD:-true}"
+	sed -ie "s/bungeecord: .*/bungeecord: ${BUNGEECORD:-false}/" spigot.yml
+	echo "bungeecord: ${BUNGEECORD:-false}"
 fi
 
 if [ "${BOOT_MODE}" = "BASH" ]; then
