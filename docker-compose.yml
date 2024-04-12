@@ -20,9 +20,9 @@ services:
         # 起動時の最大メモリ使用量
       - MEM_MAX=4G
         # オンラインモード (server.properties)
-      - ONLINE_MODE=false
+      - ONLINE_MODE=true
         # BungeeCord (spigot.yml)
-      - BUNGEECORD=true
+      - BUNGEECORD=false
         # ポート
       - PORT=25565
         # 日本語表示の設定
